@@ -1,9 +1,13 @@
 ﻿#include <iostream>
 #include "Part2.h"
+#include "Note.h"
+#include "List.h"
 using namespace std;
 int main()
 {
-    digit_to_word();
+    List lst;
+    ++lst;
+    lst.Print_list();
     return 0;
 }
 
