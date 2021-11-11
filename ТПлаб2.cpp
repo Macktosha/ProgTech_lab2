@@ -1,7 +1,9 @@
 ﻿#include <iostream>
+#include "Part2.h"
 using namespace std;
 int main()
 {
-    cout << "Hello World!\n";
+    digit_to_word();
+    return 0;
 }
 
