@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <fstream>
 #include <sstream>
+#include <string>
 using namespace std;
 
 void digit_to_word() {

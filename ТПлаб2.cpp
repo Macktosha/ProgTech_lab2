@@ -7,7 +7,10 @@ int main()
 {
     List lst;
     ++lst;
+    ++lst;
+    ++lst;
     lst.Print_list();
+    
     return 0;
 }
 

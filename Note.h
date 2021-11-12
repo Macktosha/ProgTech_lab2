@@ -1,21 +1,7 @@
 ﻿#pragma once
-#include "List.h"
-/*
-* Определить класс с именем NОТЕ, содержащий следующие поля:
-● фамилия, имя;
-● номер телефона;
-● день рождения (массив из трех чисел).
-Определить методы доступа к этим полям и перегруженные операции
-извлечения и вставки для объектов типа NОТЕ.
-Заранее число объектов не известно.
-Написать программу, выполняющую следующие действия:
-● записи должны быть упорядочены по трем первым цифрам номера
-телефона;
-● вывод на экран информации о человеке, чья фамилия введена с
-клавиатуры;
-● если такого нет, выдать на дисплей соответствующее сообщение.
-
-*/
+#include <iostream>
+#include <string>
+using namespace std;
 class Note
 {
 private:
@@ -24,19 +10,26 @@ private:
 	string phone_num;
 	int birth_date[3];
 public:
+	Note() {
+		
+		memset(birth_date, 0, 3);
+	}
+	~Note()=default;
 	void set_Name(string tmp);
 	void set_Surname(string tmp);
 	void set_Phone(string tmp);
-	void set_Birth(int, int, int);
+	void set_Birth(int x1, int x2, int x3);
 
 	string get_Name();
 	string get_Surname();
 	string get_Phone();
 	int* get_Date();
+	int get_3digits();
+
 
 	void print_info();
 	void edit_info();
-	void find_person();
+	//void find_person();
 
 
 };

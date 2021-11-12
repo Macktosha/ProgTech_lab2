@@ -1,17 +1,14 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-
 #include <string>
 #include "Note.h"
+
 using namespace std;
-
-
-
 
 typedef struct Element
 {
-	Note* data;
+	Note my_data;
 	Element* pNext;
 }Element;
 

@@ -1,5 +1,5 @@
 #include "Note.h"
-
+using namespace std;
 void Note::set_Name(string t_name)
 {
 	this->name = t_name;
@@ -43,6 +43,11 @@ int* Note::get_Date()
 	return this->birth_date;
 }
 
+int Note::get_3digits()
+{
+	return stoi(this->phone_num.substr(0, 3));
+}
+
 void Note::print_info()
 {
 	cout << "------info------" << endl;
@@ -50,5 +55,9 @@ void Note::print_info()
 	cout << "-Name: " << this->name << endl;
 	cout << "-Phone N: " << this->phone_num << endl;
 	cout << "-Date of birth: " << this->birth_date[0] << "." << this->birth_date[1] << "." << this->birth_date[2] << endl;
+}
+
+void Note::edit_info()
+{
 }
 

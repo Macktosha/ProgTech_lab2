@@ -1,6 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "List.h"
-#include <iostream>
+
 
 
 List::List()
@@ -26,25 +25,25 @@ List& List::operator++()//добавление в конец префикс
 {
     string buffer;
    unsigned int x1, x2, x3;
-    int choice = 0;
+  
     cout << "Adding to the end\n" << endl;
-    cin >> choice;
+ 
     Element* temp = new Element;
     
     
     // создание нового элемента
      cout << "Please, enter the name" << endl;
      cin >> buffer;
-     temp->data->set_Name(buffer);
+     temp->my_data.set_Name(buffer);
      cout << "Enter the surname" << endl;
      cin >> buffer;
-     temp->data->set_Surname(buffer);
+     temp->my_data.set_Surname(buffer);
      cout << "Enter the phone number" << endl;
      cin >> buffer;
-     temp->data->set_Phone(buffer);
+     temp->my_data.set_Phone(buffer);
      cout << "Enter birthdate(dd mm yyyy)" << endl;
      cin >> x1 >> x2 >> x3;
-     temp->data->set_Birth(x1, x2, x3);
+     temp->my_data.set_Birth(x1, x2, x3);
      
 
     // заполнение данными
@@ -122,25 +121,25 @@ List& operator++(List& L2, int)//добавление в начало постфикс френд
 {
     string buffer;
     unsigned int x1, x2, x3;
-    int choice = 0;
-    cout << "Adding to the end\n" << endl;
-    cin >> choice;
+  
+    cout << "Adding to the head\n" << endl;
+    
     Element* temp = new Element;
 
 
     // создание нового элемента
     cout << "Please, enter the name" << endl;
     cin >> buffer;
-    temp->data->set_Name(buffer);
+    temp->my_data.set_Name(buffer);
     cout << "Enter the surname" << endl;
     cin >> buffer;
-    temp->data->set_Surname(buffer);
+    temp->my_data.set_Surname(buffer);
     cout << "Enter the phone number" << endl;
     cin >> buffer;
-    temp->data->set_Phone(buffer);
+    temp->my_data.set_Phone(buffer);
     cout << "Enter birthdate(dd mm yyyy)" << endl;
     cin >> x1 >> x2 >> x3;
-    temp->data->set_Birth(x1, x2, x3);
+    temp->my_data.set_Birth(x1, x2, x3);
 
 
     if (L2.Head == NULL)
@@ -175,6 +174,7 @@ void List::DelAll()
         Del_head();
 }
 
+
 void List::Print_list()
 {
     // запоминаем адрес головного элемента
@@ -185,19 +185,30 @@ void List::Print_list()
         cout << "The list is empty" << endl;
         return;
     }
-    cout << "Head of the list" << endl;
+
+
     int i = 0;
-    while (temp != 0)
+    
+    Note* to_array = new Note[count];
+
+    while (temp != 0)//список превращаем в массив
     {
-        // Выводим данные
-        temp->data->print_info();
-        cout << "\n\n";
+        to_array[i] = temp->my_data;
         // Переходим на следующий элемент
         temp = temp->pNext;
         i++;
     }
+  
+    for (i = 0; i < count; i++) {//сортировка пузырьком по номеру телефона
+        for (int j = 0; j < count - 1; j++) {
+            if (to_array[j].get_3digits() > to_array[j + 1].get_3digits())
+                swap(to_array[j], to_array[j + 1]);
+        }
+    }
+    for (i = 0; i < count; i++)//печать отсортированного списка
+        to_array[i].print_info();
 
-    cout << "Tail of the list\n\n" << endl;
+    delete[] to_array;
 }
 
 
@@ -226,7 +237,7 @@ List& List::delete_elem(int n) {
         {
             helping->pNext = temp->pNext;
         }
-        cout << "you've deleted " << temp->data->get_Name() << endl;
+        cout << "you've deleted " << temp->my_data.get_Surname() << endl;
         delete temp;
        
         count--; // уменьшаем размер списка
@@ -252,7 +263,7 @@ List& List::edit_elem(int n) {
     while (i<=n)
     {
         if (i == n) {
-            temp->data->edit_info();
+            temp->my_data.edit_info();
 
             break;
        }
