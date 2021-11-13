@@ -59,5 +59,41 @@ void Note::print_info()
 
 void Note::edit_info()
 {
+	cout << "Choose param to edit:\n1 - Name\n2 - Surname\n3 - Phone number\n4 - Birth date\n\t5 - Exit" << endl;
+	int choice = 0;
+	string tmp;
+	int dd, mm, yy;
+	cin >> choice;
+	while (choice < 0 || choice>5) {
+		cout << "Incorrect input, enter again" << endl;
+		cin >> choice;
+	}
+	switch (choice)
+	{
+	case 1:
+		cout << "Set new name:" << endl;
+		cin >> tmp;
+		this->set_Name(tmp);
+		break;
+	case 2:
+		cout << "Set new surname:" << endl;
+		cin >> tmp;
+		this->set_Surname(tmp);
+		break;
+	case 3:
+		cout << "Set new phone number:" << endl;
+		cin >> tmp;
+		this->set_Phone(tmp);
+		break;
+	case 4:
+		cout << "Set new birth date:" << endl;
+		cin >> dd>>mm>>yy;
+		this->set_Birth(dd,mm,yy);
+		break;
+	case 5:
+		return;
+	default:
+		break;
+	}
 }
 

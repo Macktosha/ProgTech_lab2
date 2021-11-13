@@ -186,7 +186,6 @@ void List::Print_list()
         return;
     }
 
-
     int i = 0;
     
     Note* to_array = new Note[count];
@@ -205,10 +204,36 @@ void List::Print_list()
                 swap(to_array[j], to_array[j + 1]);
         }
     }
-    for (i = 0; i < count; i++)//печать отсортированного списка
+    for (i = 0; i < count; i++) {//печать отсортированного списка
+        cout << i << "." << endl;
         to_array[i].print_info();
-
+        cout << "\n";
+    }
     delete[] to_array;
+}
+
+void List::unordered_print()
+{
+    // запоминаем адрес головного элемента
+    Element* temp = Head;
+    // Пока еще есть элементы
+
+    if (count == 0) {
+        cout << "The list is empty" << endl;
+        return;
+    }
+    
+    int i = 0;
+    while (temp != 0)
+    {
+        cout << i + 1<<endl;
+        // Выводим данные
+        temp->my_data.print_info();
+        // Переходим на следующий элемент
+        temp = temp->pNext;
+        i++;
+    }
+
 }
 
 
@@ -272,4 +297,28 @@ List& List::edit_elem(int n) {
     }
     return *this;
    
+}
+
+void List::find_person()
+{
+    string fsurname,tmp;
+    Element* temp = Head;
+    bool flag = true;
+    cout << "Please, enter the surname to find it" << endl;
+    cin >> fsurname;
+    transform(fsurname.begin(), fsurname.end(), fsurname.begin(), ::tolower);
+
+    while (temp!=0)
+    {
+        tmp = temp->my_data.get_Surname();
+        transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
+        if (tmp == fsurname) {
+            temp->my_data.print_info();
+            flag = false;
+        }
+        temp = temp->pNext;
+    }
+    if (flag)
+        cout << "There is no such person with surname" << fsurname << endl;
+    
 }

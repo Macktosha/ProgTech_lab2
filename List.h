@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
+#include <cstring>
 #include "Note.h"
 
 using namespace std;
@@ -41,6 +43,7 @@ public:
 	List& operator--(int);//удаление из начала постфикс
 
 	void Print_list();//Печать списка
+	void unordered_print();
 
 	// Получение количества элементов, находящихся в списке
 	int GetCount();
@@ -49,7 +52,7 @@ public:
 	List& delete_elem(int n);
 	List& edit_elem(int n);
 
-	
+	void find_person();
 
 
 

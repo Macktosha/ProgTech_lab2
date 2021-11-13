@@ -14,6 +14,7 @@ public:
 		
 		memset(birth_date, 0, 3);
 	}
+	
 	~Note()=default;
 	void set_Name(string tmp);
 	void set_Surname(string tmp);
@@ -29,7 +30,7 @@ public:
 
 	void print_info();
 	void edit_info();
-	//void find_person();
+	
 
 
 };
