@@ -36,6 +36,7 @@ void digit_to_word() {
                     break;
                 case '2':
                     cout << "two ";
+                    break;
                 case '3':
                     cout << "three ";
                     break;

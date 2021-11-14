@@ -68,24 +68,24 @@ List& List::operator++()//добавление в конец префикс
     return *this;
 }
 
-List& operator--(List& L1) {//удаление из конца префикс френд
+List& List::operator--() {//удаление из конца префикс 
 
-    if (L1.count == 0) {
+    if (count == 0) {
         cout << "List is empty" << endl;
-        return L1;
+        return *this;
     }
 
-    else if (L1.count == 1)
+    else if (count == 1)
     {
-        Element* temp = L1.Head;
+        Element* temp = Head;
         delete temp;
-        L1.Head = L1.Tail = NULL;
+        Head = Tail = NULL;
         cout << "Now this list is empty" << endl;
     }
     else {
 
-        Element* one = L1.Head;
-        Element* two = L1.Head->pNext;
+        Element* one = Head;
+        Element* two = Head->pNext;
         while (two->pNext != NULL) {
             two = two->pNext;
             one = one->pNext;
@@ -93,9 +93,9 @@ List& operator--(List& L1) {//удаление из конца префикс френд
         one->pNext = NULL;
         delete two;
     }
-    L1.count--;
+    count--;
    
-    return L1;
+    return *this;
 }
 
 List& List::operator--(int) {//удаление из начала постфикс
@@ -117,7 +117,7 @@ List& List::operator--(int) {//удаление из начала постфикс
     return *this;
 }
 
-List& operator++(List& L2, int)//добавление в начало постфикс френд
+List& List::operator++(int)//добавление в начало постфикс френд
 {
     string buffer;
     unsigned int x1, x2, x3;
@@ -142,18 +142,18 @@ List& operator++(List& L2, int)//добавление в начало постфикс френд
     temp->my_data.set_Birth(x1, x2, x3);
 
 
-    if (L2.Head == NULL)
+    if (Head == NULL)
     {
         temp->pNext = NULL;
-        L2.Head = L2.Tail = temp;
+        Head = Tail = temp;
     }
-    else  if (L2.Head != NULL)
+    else  if (Head != NULL)
     {
-        temp->pNext = L2.Head;
-        L2.Head = temp;
+        temp->pNext = Head;
+        Head = temp;
     }
-    L2.count++;
-    return L2;
+    count++;
+    return *this;
 }
 
 void List::Del_head()

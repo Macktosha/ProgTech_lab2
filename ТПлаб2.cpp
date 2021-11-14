@@ -10,6 +10,9 @@ int main()
 
     UI->main_menu();
     
+    
+    delete UI;
+    delete lst;
     return 0;
 }
 

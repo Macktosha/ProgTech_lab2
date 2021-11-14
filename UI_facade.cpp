@@ -24,10 +24,10 @@ void UI_facade::runADD_menu()
 	switch (choice)
 	{
 	case '1':
-		my_lst->operator++();
+		my_lst->operator++(1);
 		break;
 	case '2':
-		this->my_lst->operator++();
+		my_lst->operator++();
 		break;
 	case '3':
 		break;
@@ -62,7 +62,7 @@ void UI_facade::runDelete_menu()
 		my_lst->operator--(1);
 		break;
 	case '2':
-		--my_lst;
+		my_lst->operator--();
 		break;
 	case '3':
 		my_lst->unordered_print();
