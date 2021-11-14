@@ -205,7 +205,7 @@ void List::Print_list()
         }
     }
     for (i = 0; i < count; i++) {//печать отсортированного списка
-        cout << i << "." << endl;
+        cout << i+1 << "." << endl;
         to_array[i].print_info();
         cout << "\n";
     }

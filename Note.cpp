@@ -45,7 +45,24 @@ int* Note::get_Date()
 
 int Note::get_3digits()
 {
-	return stoi(this->phone_num.substr(0, 3));
+	try
+	{
+		string tmp=this->phone_num.substr(0, 3);
+		for (size_t i = 0; i < tmp.length(); i++)
+		{
+			if (tmp[i] < 48 || tmp[i]>57)
+				throw "Number contains characters";
+		}
+		
+		return stoi(tmp);
+	}
+	catch (const char* exp)
+	{
+		cerr << exp << endl;
+	}
+	
+
+	
 }
 
 void Note::print_info()
@@ -63,11 +80,21 @@ void Note::edit_info()
 	int choice = 0;
 	string tmp;
 	int dd, mm, yy;
-	cin >> choice;
-	while (choice < 0 || choice>5) {
-		cout << "Incorrect input, enter again" << endl;
+	try {
 		cin >> choice;
+		if (choice < '1' || choice>'5' || cin.fail()) {
+			cin.clear();
+			cin.ignore(32767, '\n');
+			choice = '5';
+			throw "Incorrect input";
+		}
 	}
+	catch (const char* exp)
+	{
+		cerr << exp << endl;
+		choice = '5';
+	}
+
 	switch (choice)
 	{
 	case 1:
